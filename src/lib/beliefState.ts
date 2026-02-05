@@ -25,24 +25,6 @@ export function calculateBeliefState(
 
 function getInitialFocus(direction: Direction): CurrentFocus {
   const focuses: Record<Direction, CurrentFocus> = {
-    'E-commerce': {
-      question: 'Will anyone buy this product?',
-      whyItMatters: 'No revenue = no business. Everything else is theoretical until someone pays.',
-      ifWorks: 'Find more people like first customers. Test if this can scale.',
-      ifFails: 'Try different product, different audience, or different channel.',
-    },
-    Service: {
-      question: 'Will clients pay for this service?',
-      whyItMatters: 'Need to prove people value this enough to spend money on it.',
-      ifWorks: 'Refine delivery process. Find more similar clients.',
-      ifFails: 'Change positioning, pricing, or target different clients.',
-    },
-    Content: {
-      question: 'Will people actually watch/read this?',
-      whyItMatters: 'No audience = no monetization. Growth comes before revenue.',
-      ifWorks: 'Keep posting. Build momentum. Look for monetization signals.',
-      ifFails: 'Try different format, topic, or platform.',
-    },
     'Client Services': {
       question: 'Will clients respond and hire me?',
       whyItMatters: 'Need to prove demand exists and you can close deals.',
@@ -61,19 +43,13 @@ function getInitialFocus(direction: Direction): CurrentFocus {
       ifWorks: 'Do more of what is working. Post more often.',
       ifFails: 'Change what you post about, how you post it, or where you post.',
     },
-    'Digital Products': {
-      question: 'Will people pay for this before I build it?',
+    'Software / Digital Product': {
+      question: 'Will people pay for this?',
       whyItMatters: 'Building something nobody wants to buy is the biggest mistake. Check first.',
       ifWorks: 'Build the simplest version. Give it to people who already said yes.',
       ifFails: 'Change what you are offering or find a different problem to solve.',
     },
-    SaaS: {
-      question: 'Will anyone actually use this?',
-      whyItMatters: 'People need to use it before they will pay for it. No users = no business.',
-      ifWorks: 'Find more people like the first users. See if they keep using it.',
-      ifFails: 'Change what problem you are solving or who you are helping.',
-    },
-    Marketplace: {
+    'Marketplace / Platform': {
       question: 'Can I get both sides to show up?',
       whyItMatters: 'Need people selling AND people buying. Getting started is the hard part.',
       ifWorks: 'Focus on whichever side is working better. Build from there.',
@@ -81,14 +57,7 @@ function getInitialFocus(direction: Direction): CurrentFocus {
     },
   }
 
-  return (
-    focuses[direction] || {
-      question: 'Is this worth continuing?',
-      whyItMatters: 'Need evidence this can work before investing more time.',
-      ifWorks: 'Keep going. Scale what works.',
-      ifFails: 'Change approach or try something else.',
-    }
-  )
+  return focuses[direction]
 }
 
 function generateCurrentFocus(

@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
   })
@@ -38,10 +38,6 @@ export async function middleware(request: NextRequest) {
 
   // Redirect unauthenticated users to login
   if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/auth/login', request.url))
-  }
-
-  if (!user && request.nextUrl.pathname.startsWith('/journey')) {
     return NextResponse.redirect(new URL('/auth/login', request.url))
   }
 

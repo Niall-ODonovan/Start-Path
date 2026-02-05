@@ -7,24 +7,36 @@ import type { Commitment, Direction } from '@/lib/types'
 
 type Step = 'loading' | 'completed' | 'outcome' | 'learned' | 'processing' | 'result'
 
-const OUTCOME_OPTIONS = {
-  'E-commerce': [
-    'Got my first sale',
-    'Had conversations, no sales yet',
-    'Built something, no traction',
-    'Struggled to start',
-  ],
-  Service: [
-    'Landed a client',
-    'Got interest, no commitments',
+const OUTCOME_OPTIONS: Record<string, string[]> = {
+  'Client Services': [
+    'Landed a paying client',
+    'Got interest, no commitments yet',
     'Put myself out there, no response',
     'Struggled to start',
   ],
-  Content: [
+  'Productized Services': [
+    'Sold a package',
+    'Got interest, no sales yet',
+    'Shared the offer, no response',
+    'Struggled to define the offer',
+  ],
+  'Audience → Monetization': [
     'Content performed well',
     'Published, small response',
     'Published, no engagement',
     'Struggled to create',
+  ],
+  'Software / Digital Product': [
+    'Got my first paying customer',
+    'Got signups, no conversions yet',
+    'Built something, no traction',
+    'Struggled to start',
+  ],
+  'Marketplace / Platform': [
+    'Got both sides engaged',
+    'Got one side interested',
+    'Built it, no activity',
+    'Struggled to start',
   ],
 }
 
@@ -91,24 +103,36 @@ function determinePathAdjustment(
   currentDirection: Direction,
   currentAction: string
 ): { adjustment: 'double_down' | 'narrow' | 'pivot' | 'escalate'; nextAction: string } {
-  const ACTION_PROGRESSIONS = {
-    'E-commerce': {
-      double_down: 'List 10 more products and optimize based on what sold',
-      narrow: 'Focus only on the product category that got interest',
-      pivot: 'Try a different sales channel or product type',
-      escalate: 'Commit to $1000 in revenue this month',
-    },
-    Service: {
+  const ACTION_PROGRESSIONS: Record<string, { double_down: string; narrow: string; pivot: string; escalate: string }> = {
+    'Client Services': {
       double_down: 'Reach out to 20 more potential clients with your offer',
       narrow: 'Target only the specific niche that responded',
       pivot: 'Change your service offering based on feedback',
       escalate: 'Commit to landing 3 paying clients this month',
     },
-    Content: {
+    'Productized Services': {
+      double_down: 'Promote your package to 20 more potential buyers',
+      narrow: 'Focus only on the customer segment that showed interest',
+      pivot: 'Adjust your package based on what people actually want',
+      escalate: 'Commit to 5 package sales this month',
+    },
+    'Audience → Monetization': {
       double_down: 'Publish 10 more pieces in the same format',
       narrow: 'Focus only on the topic that got engagement',
       pivot: 'Try a completely different content format or platform',
       escalate: 'Commit to building 1000 followers this month',
+    },
+    'Software / Digital Product': {
+      double_down: 'Talk to 10 more potential customers and iterate',
+      narrow: 'Focus only on the feature that users care about most',
+      pivot: 'Build something different based on what you learned',
+      escalate: 'Commit to 10 paying customers this month',
+    },
+    'Marketplace / Platform': {
+      double_down: 'Manually recruit 20 more users on both sides',
+      narrow: 'Focus on just one geographic area or niche',
+      pivot: 'Try a different value proposition or market',
+      escalate: 'Commit to 50 active users on each side',
     },
   }
 

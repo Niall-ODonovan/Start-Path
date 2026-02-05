@@ -11,17 +11,7 @@ export default function NextAction({
     if (!hasEvidence) {
       return 'Start working on your commitment. Add observations as you go.'
     }
-
-    switch (currentDirection) {
-      case 'E-commerce':
-        return 'Continue executing. Document what you learn.'
-      case 'Service':
-        return 'Keep taking action. Record what happens.'
-      case 'Content':
-        return 'Stay consistent. Track your observations.'
-      default:
-        return 'Keep moving forward. Add evidence as you progress.'
-    }
+    return 'Keep moving forward. Add evidence as you progress.'
   }
 
   return (

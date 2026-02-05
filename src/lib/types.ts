@@ -73,15 +73,11 @@ export interface InsightRecord {
 }
 
 export type Direction =
-  | 'E-commerce'
-  | 'Service'
-  | 'Content'
   | 'Client Services'
   | 'Productized Services'
   | 'Audience → Monetization'
-  | 'Digital Products'
-  | 'SaaS'
-  | 'Marketplace';
+  | 'Software / Digital Product'
+  | 'Marketplace / Platform';
 
 export interface BusinessProfile {
   id: string;
